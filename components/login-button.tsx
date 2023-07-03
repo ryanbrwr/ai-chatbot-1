@@ -24,7 +24,7 @@ export function LoginButton({
       variant="outline"
       onClick={() => {
         setIsLoading(true)
-        signIn('github', { callbackUrl: `/` })
+        signIn('credentials', { callbackUrl: `/` })
       }}
       disabled={isLoading}
       className={cn(className)}
