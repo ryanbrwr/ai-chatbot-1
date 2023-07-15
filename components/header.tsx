@@ -22,27 +22,16 @@ import { LoginButton } from '@/components/login-button'
 export async function Header() {
   const session = await auth()
   return (
-    <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-gradient-to-b from-background/10 via-background/50 to-background/80 px-4 backdrop-blur-xl">
+    <header className="from-background/10 via-background/50 to-background/80 sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-gradient-to-b px-4 backdrop-blur-xl">
       <div className="flex items-center">
-        {session?.user ? (
-          <Sidebar>
-            <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
-              {/* @ts-ignore */}
-              <SidebarList userId={session?.user?.id} />
-            </React.Suspense>
-            <SidebarFooter>
-              <ThemeToggle />
-              <ClearHistory clearChats={clearChats} />
-            </SidebarFooter>
-          </Sidebar>
-        ) : (
-          <Link href="/" target="_blank" rel="nofollow">
-            <IconNextChat className="mr-2 h-6 w-6 dark:hidden" inverted />
-            <IconNextChat className="mr-2 hidden h-6 w-6 dark:block" />
-          </Link>
-        )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://student-management.com/wp-content/uploads/2020/08/SMG_logo-e1597080410333.png"
+          alt="SMG Logo"
+          className="mr-2 h-6"
+        />
         <div className="flex items-center">
-          <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
+          <IconSeparator className="text-muted-foreground/50 h-6 w-6" />
           {session?.user ? (
             <UserMenu user={session.user} />
           ) : (

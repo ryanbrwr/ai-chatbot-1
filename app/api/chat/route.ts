@@ -9,10 +9,11 @@ let ChatMessage: ChatCompletionRequestMessage = {
 }
 
 import { auth } from '@/auth'
-import { nanoid } from '@/lib/utils'
+
 import { getEmbedding } from '@/lib/get-embedding'
 import { queryPinecone } from '@/lib/pinecone'
 import { composePrompt } from '@/lib/compose-prompt'
+import { nanoid } from 'nanoid'
 
 export const runtime = 'edge'
 
@@ -43,7 +44,7 @@ export async function POST(req: Request) {
     },
     {
       role: 'system',
-      content: 'Context: \n' + context.substring(0, 3000)
+      content: 'Context: \n' + context.substring(0, 4000)
     }
   ]
 

@@ -32,3 +32,27 @@ export async function queryPinecone(
     metadata: match.metadata
   }))
 }
+
+export async function upsertVectors(
+  vectors: {
+    id: string
+    values: number[]
+    metadata: {
+      text: string
+    }
+  }[]
+): Promise<void> {
+  const pinecone = new PineconeClient()
+  await pinecone.init({
+    environment: 'asia-southeast1-gcp',
+    apiKey: '05d39086-e661-4e9c-83fc-dac206889bd5'
+  })
+
+  const index = pinecone.Index('ise')
+
+  await index.upsert({
+    upsertRequest: {
+      vectors
+    }
+  })
+}

@@ -6,7 +6,7 @@ export async function getEmbedding({
   model?: string
 }): Promise<number[] | null> {
   const url = 'https://api.openai.com/v1/embeddings'
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY
+  const OPENAI_API_KEY = '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'
 
   const body = {
     input,
